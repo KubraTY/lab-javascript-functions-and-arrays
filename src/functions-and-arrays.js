@@ -51,14 +51,23 @@ function sum(numberArr) {
 
   for (let i = 0; i < numberArr.length; i++) {
     if (typeof numberArr[i] === "number" || typeof numberArr[i] === "string" || typeof numberArr[i] === "boolean") {
-      total += numberArr[i];
+      if(typeof numberArr[i] === "number"){
+        total += numberArr[i];
+      }else if(typeof numberArr[i] === "string"){
+        total += numberArr[i].length
+      }else if(typeof numberArr[i] === "boolean"){
+        if(numberArr[i] === true){
+          total += 1
+        }
+      }
+      
 
       if (typeof numberArr[i] === "string" || typeof numberArr[i] === "boolean") {
         total = total
       }
     } else {
       errMessage = "Unsupported data type!";
-      break;  // Break out of the loop when an unsupported data type is encountered
+      break;  
     }
   }
 
